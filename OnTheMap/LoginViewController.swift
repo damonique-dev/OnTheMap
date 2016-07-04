@@ -68,9 +68,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func completeLogin() {
-        print("Login successful")
-//        let controller = storyboard!.instantiateViewControllerWithIdentifier("ManagerNavigationController") as! UINavigationController
-//        presentViewController(controller, animated: true, completion: nil)
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("mainNavController") as! UINavigationController
+        presentViewController(controller, animated: true, completion: nil)
     }
 
 }

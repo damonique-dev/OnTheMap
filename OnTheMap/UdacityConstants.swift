@@ -23,10 +23,17 @@ extension UdacityClient {
         static let UserData = "/users/{user_id}"
     }
     
+    struct URLKeys {
+        static let UserID = "user_id"
+    }
+    
     struct JSONResponseKeys {
         static let Session = "session"
         static let ID = "id"
         static let Account = "account"
         static let UserID = "key"
+        static let User = "user"
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
     }
 }

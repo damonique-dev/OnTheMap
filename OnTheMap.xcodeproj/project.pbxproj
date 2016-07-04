@@ -19,6 +19,10 @@
 		699481091D29E0A300D69812 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481081D29E0A300D69812 /* ParseClient.swift */; };
 		6994810B1D29E0B000D69812 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6994810A1D29E0B000D69812 /* ParseConstants.swift */; };
 		699481111D29EBC400D69812 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481101D29EBC400D69812 /* GCDBlackBox.swift */; };
+		699481131D2A002400D69812 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481121D2A002400D69812 /* TabBarViewController.swift */; };
+		699481151D2A01B900D69812 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481141D2A01B900D69812 /* MapViewController.swift */; };
+		699481171D2A01EF00D69812 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481161D2A01EF00D69812 /* StudentTableViewController.swift */; };
+		699481191D2A080500D69812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699481181D2A080500D69812 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		699481081D29E0A300D69812 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		6994810A1D29E0B000D69812 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		699481101D29EBC400D69812 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		699481121D2A002400D69812 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		699481141D2A01B900D69812 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		699481161D2A01EF00D69812 /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
+		699481181D2A080500D69812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699481191D2A080500D69812 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +96,7 @@
 		699480C71D2626BA00D69812 = {
 			isa = PBXGroup;
 			children = (
+				699481181D2A080500D69812 /* MapKit.framework */,
 				699480D21D2626BB00D69812 /* OnTheMap */,
 				699480E71D2626BB00D69812 /* OnTheMapTests */,
 				699480F21D2626BB00D69812 /* OnTheMapUITests */,
@@ -149,6 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				699480D51D2626BB00D69812 /* LoginViewController.swift */,
+				699481121D2A002400D69812 /* TabBarViewController.swift */,
+				699481141D2A01B900D69812 /* MapViewController.swift */,
+				699481161D2A01EF00D69812 /* StudentTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -295,12 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699481131D2A002400D69812 /* TabBarViewController.swift in Sources */,
 				699480D61D2626BB00D69812 /* LoginViewController.swift in Sources */,
 				699481091D29E0A300D69812 /* ParseClient.swift in Sources */,
 				699480D41D2626BB00D69812 /* AppDelegate.swift in Sources */,
+				699481151D2A01B900D69812 /* MapViewController.swift in Sources */,
 				699481071D29DA6500D69812 /* UdacityClient.swift in Sources */,
 				699481051D29DA4700D69812 /* UdacityConstants.swift in Sources */,
 				6994810B1D29E0B000D69812 /* ParseConstants.swift in Sources */,
+				699481171D2A01EF00D69812 /* StudentTableViewController.swift in Sources */,
 				699481111D29EBC400D69812 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
