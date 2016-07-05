@@ -12,11 +12,6 @@ class UdacityClient: NSObject {
 
     var session = NSURLSession.sharedSession()
     
-    var sessionID : String? = nil
-    var userID : String? = nil
-    var firstName: String? = nil
-    var lastName: String? = nil
-    
     class func sharedInstance() -> UdacityClient {
         struct Singleton {
             static var sharedInstance = UdacityClient()
@@ -67,7 +62,7 @@ class UdacityClient: NSObject {
             //Attempt to get userID
             if let account = parsedResult[JSONResponseKeys.Account] {
                 if let userID = account![JSONResponseKeys.UserID]{
-                    self.userID = userID! as? String
+                    GlobalVariables.userID = userID! as? String
                 } else {
                     sendError("Incorrect Email/Password-account")
                     return
@@ -80,7 +75,7 @@ class UdacityClient: NSObject {
             //Attempt to get sessionID
             if let session = parsedResult[JSONResponseKeys.Session] {
                 if let sessionID = session![JSONResponseKeys.ID]{
-                    self.sessionID = sessionID! as? String
+                    GlobalVariables.sessionID = sessionID! as? String
                 } else {
                     sendError("Incorrect Email/Password-session")
                     return
@@ -133,7 +128,7 @@ class UdacityClient: NSObject {
     func getUserData(completionHandler: (success: Bool, error: String?) -> Void) {
         
         var mutableMethod: String = Methods.UserData
-        mutableMethod = subtituteKeyInMethod(mutableMethod, key: URLKeys.UserID, value: String(userID!))!
+        mutableMethod = subtituteKeyInMethod(mutableMethod, key: URLKeys.UserID, value: String(GlobalVariables.userID!))!
         let request = NSMutableURLRequest(URL: URLFromParameters(mutableMethod))
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
@@ -169,8 +164,8 @@ class UdacityClient: NSObject {
             //Attempt to get user
             if let user = parsedResult[JSONResponseKeys.User] {
                 if let last = user![JSONResponseKeys.LastName], first = user![JSONResponseKeys.FirstName] {
-                    self.lastName = last! as? String
-                    self.firstName = first! as? String
+                    GlobalVariables.lastName = last! as? String
+                    GlobalVariables.firstName = first! as? String
                 } else {
                     sendError("Failed getting First/Last Name")
                     return

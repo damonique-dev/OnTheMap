@@ -19,6 +19,7 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var urlTextBox: UITextView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var urlLabel: UILabel!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var lat:Float!
@@ -33,6 +34,9 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
         
         firstViewVisibility(false)
         secondViewVisibility(true)
+        
+        buttonFormat(locationButton)
+        buttonFormat(submitButton)
         
         queryLocationAndGetStudentData()
     }
@@ -56,18 +60,23 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
                     self.displayAlert("Could not Geocode Location")
                 }
             })
+        } else {
+            displayAlert("Please enter a location!")
         }
     }
     
     @IBAction func postPin(sender: AnyObject) {
-        //Checks to see if a student result was returned
-        lat = Float(coordinates.latitude)
-        lng = Float(coordinates.longitude)
-        activityIndicator.startAnimating()
-        if result?.count == 0 {
-            self.postLocation()
+        if urlTextBox.text != "" {
+            lat = Float(coordinates.latitude)
+            lng = Float(coordinates.longitude)
+            activityIndicator.startAnimating()
+            if result?.count == 0 {
+                self.postLocation()
+            } else {
+                self.updateLocation(result!)
+            }
         } else {
-            self.updateLocation(result!)
+            displayAlert("Please enter a link!")
         }
     }
     
@@ -77,30 +86,19 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - API CALLS
     func queryLocationAndGetStudentData(){
-        ParseClient.sharedInstance().queryForStudentLocation(){ (success, result, error) in
-            if success {
-                self.result = result
-                self.overrideLocation()
-            } else {
-                self.displayAlert(error!)
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        }
-        
         UdacityClient.sharedInstance().getUserData(){ (success, error) in
             if !success {
                 self.displayAlert(error!)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        
     }
     
     func postLocation(){
         let info = [
-            "uniqueKey": UdacityClient.sharedInstance().userID!,
-            "firstName": UdacityClient.sharedInstance().firstName!,
-            "lastName": UdacityClient.sharedInstance().lastName!,
+            "uniqueKey": GlobalVariables.userID!,
+            "firstName": GlobalVariables.firstName!,
+            "lastName": GlobalVariables.lastName!,
             "mapString": locationTextBox.text!,
             "mediaURL": urlTextBox.text!,
             "latitude": lat,
@@ -143,23 +141,9 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
     }
     
     //MARK:- ACTION HELPERS
-    func overrideLocation(){
-        if result?.count > 0 {
-            let message = "There already exists a location for you. Would you like to override it?"
-            let alertView = UIAlertController(title: "Uh-Oh", message: message, preferredStyle: .Alert)
-            alertView.addAction(UIAlertAction(title: "Override", style: .Default, handler: nil))
-            alertView.addAction(UIAlertAction(title: "Cancel", style: .Default){ _ in
-                self.dismissViewControllerAnimated(true, completion: nil)
-                })
-            presentViewController(alertView, animated: true, completion: nil)
-        }
-    }
-    
     func displayAlert(message:String){
         let alertView = UIAlertController(title: "Uh-Oh", message: message, preferredStyle: .Alert)
-        alertView.addAction(UIAlertAction(title: "Ok", style: .Default){ _ in
-            self.dismissViewControllerAnimated(true, completion: nil)
-            })
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         presentViewController(alertView, animated: true, completion: nil)
     }
     
@@ -180,7 +164,6 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
         let map = tab.viewControllers![0] as! MapViewController
         let table = tab.viewControllers![1] as! StudentTableViewController
         dispatch_async(dispatch_get_main_queue(), {
-            tab.getStudentLocations()
             map.reload()
             table.reload()
         })
@@ -213,22 +196,22 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
         return pinView
     }
     
+    func buttonFormat(button:UIButton){
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.blackColor().CGColor
+    }
+    
     func secondViewVisibility(hide: Bool){
         submitButton.hidden = hide
         mapView.hidden = hide
         urlTextBox.hidden = hide
-        if(hide) {
-            //view.backgroundColor = UIColor(hexString: "FD8C1C")
-        }
-        
+        urlLabel.hidden = hide
     }
     
     func firstViewVisibility(hide: Bool){
         locationLabel.hidden = hide
         locationTextBox.hidden = hide
         locationButton.hidden = hide
-        if(hide) {
-            //view.backgroundColor = UIColor(hexString: "A9A9A9")
-        }
     }
 }

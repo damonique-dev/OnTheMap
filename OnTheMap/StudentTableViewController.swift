@@ -13,15 +13,30 @@ class StudentTableViewController: UITableViewController {
     var students: [Student]!
     override func viewDidLoad() {
         super.viewDidLoad()
-        students = ParseClient.sharedInstance().students
+        getStudentLocations()
+        students = GlobalVariables.students
     }
     
     func reload() {
-        tableView.reloadData()
+        students = [Student]()
+        getStudentLocations()
+    }
+    
+    func getStudentLocations(){
+        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
+            performUIUpdatesOnMain {
+                if success {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    self.displayAlert(error!)
+                }
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return students.count
     }
 
@@ -35,6 +50,12 @@ class StudentTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student = students[indexPath.row]
         UIApplication.sharedApplication().openURL(NSURL(string: student.mediaURL)!)
+    }
+    
+    func displayAlert(message:String){
+        let alertView = UIAlertController(title: "Uh-Oh", message: message, preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alertView, animated: true, completion: nil)
     }
 
 }

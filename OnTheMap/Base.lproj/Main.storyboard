@@ -57,20 +57,6 @@
                                     <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XBj-3a-Z2v"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8O-lN-rA6">
-                                <rect key="frame" x="20" y="543" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.30588235294117649" green="0.41176470588235292" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Pni-nh-Hga"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Sign in with Facebook">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7bq-Vi-SE2"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-KI-EYA">
                                 <rect key="frame" x="224" y="37" width="152" height="145"/>
                                 <constraints>
@@ -95,7 +81,6 @@
                             <constraint firstItem="HaD-KI-EYA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="7JX-LY-4d1"/>
                             <constraint firstItem="HaD-KI-EYA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ao4-BV-hQH"/>
                             <constraint firstItem="aDw-dd-dVj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="CfX-tC-j1c"/>
-                            <constraint firstItem="j8O-lN-rA6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HPq-Rt-cpf"/>
                             <constraint firstItem="LUO-e8-edT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HeQ-xP-QUQ"/>
                             <constraint firstItem="dD2-zV-5B4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NTF-lv-MPA"/>
                             <constraint firstItem="47h-9T-byl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VEf-cF-AU6"/>
@@ -104,14 +89,11 @@
                             <constraint firstItem="a0S-G9-rmK" firstAttribute="centerX" secondItem="HaD-KI-EYA" secondAttribute="centerX" id="Y6R-MX-N0M"/>
                             <constraint firstItem="aDw-dd-dVj" firstAttribute="top" secondItem="a0S-G9-rmK" secondAttribute="bottom" constant="8" id="aLU-EM-Vf4"/>
                             <constraint firstItem="4zq-fZ-CM7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="de1-WB-4BO"/>
-                            <constraint firstItem="j8O-lN-rA6" firstAttribute="top" secondItem="Hnr-yc-whe" secondAttribute="bottom" constant="101" id="dtK-U6-R1n"/>
                             <constraint firstItem="Hnr-yc-whe" firstAttribute="centerX" secondItem="4zq-fZ-CM7" secondAttribute="centerX" id="gEF-oB-xtt"/>
-                            <constraint firstItem="j8O-lN-rA6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gne-Fu-gvX"/>
                             <constraint firstItem="dD2-zV-5B4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="i5e-yE-edW"/>
                             <constraint firstItem="a0S-G9-rmK" firstAttribute="top" secondItem="HaD-KI-EYA" secondAttribute="bottom" constant="8" id="ls9-fi-Wby"/>
                             <constraint firstItem="47h-9T-byl" firstAttribute="top" secondItem="dD2-zV-5B4" secondAttribute="bottom" constant="22" id="peX-aF-IRq"/>
                             <constraint firstItem="aDw-dd-dVj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qJ1-cP-gbb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j8O-lN-rA6" secondAttribute="bottom" constant="27" id="rck-3A-XnU"/>
                             <constraint firstItem="47h-9T-byl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="tGK-jT-6pL"/>
                             <constraint firstItem="Hnr-yc-whe" firstAttribute="top" secondItem="4zq-fZ-CM7" secondAttribute="bottom" constant="8" id="xoN-0D-vqG"/>
                         </constraints>
@@ -119,7 +101,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="LUO-e8-edT" id="eb4-9Y-NdN"/>
                         <outlet property="emailTextField" destination="aDw-dd-dVj" id="h61-u8-m9l"/>
-                        <outlet property="facbookButton" destination="j8O-lN-rA6" id="keI-RL-dfn"/>
                         <outlet property="loginButton" destination="47h-9T-byl" id="y5N-py-1me"/>
                         <outlet property="logo" destination="HaD-KI-EYA" id="Cql-cg-WBC"/>
                         <outlet property="passwordTextField" destination="dD2-zV-5B4" id="1Iu-vZ-Uwk"/>
@@ -191,7 +172,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvy-Hl-chK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jvy-Hl-chK">
                                 <rect key="frame" x="20" y="98" width="560" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -209,13 +190,13 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fnh-3L-VMc">
                                 <rect key="frame" x="0.0" y="176" width="600" height="310"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.54901960780000003" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M7n-U5-NV4">
-                                <rect key="frame" x="0.0" y="64" width="600" height="174"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="122"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.5490196078431373" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tRg-Po-LPp">
@@ -235,6 +216,12 @@
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a link to share:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3X-GQ-nit">
+                                <rect key="frame" x="20" y="80" width="560" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -244,14 +231,16 @@
                             <constraint firstItem="fUZ-hM-xZp" firstAttribute="top" secondItem="qP1-OW-0bU" secondAttribute="bottom" constant="40" id="JQ9-L0-8WG"/>
                             <constraint firstItem="Jvy-Hl-chK" firstAttribute="leading" secondItem="8JR-j1-3N7" secondAttribute="leadingMargin" id="Jrs-Ll-HiB"/>
                             <constraint firstItem="Kdj-4v-PCG" firstAttribute="centerX" secondItem="8JR-j1-3N7" secondAttribute="centerX" id="N0o-hW-SjU"/>
-                            <constraint firstItem="M7n-U5-NV4" firstAttribute="top" secondItem="ZUs-Dw-dnd" secondAttribute="bottom" id="PrA-2H-crV"/>
+                            <constraint firstItem="M7n-U5-NV4" firstAttribute="top" secondItem="ZUs-Dw-dnd" secondAttribute="bottom" constant="52" id="PrA-2H-crV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tRg-Po-LPp" secondAttribute="trailing" constant="-20" id="VMd-MM-Wkr"/>
                             <constraint firstItem="qP1-OW-0bU" firstAttribute="centerX" secondItem="tRg-Po-LPp" secondAttribute="centerX" id="W67-Kv-XpN"/>
+                            <constraint firstItem="N3X-GQ-nit" firstAttribute="trailing" secondItem="8JR-j1-3N7" secondAttribute="trailingMargin" id="Ypd-Cr-IFS"/>
                             <constraint firstItem="qP1-OW-0bU" firstAttribute="top" secondItem="M7n-U5-NV4" secondAttribute="bottom" constant="277" id="axD-BP-CET"/>
                             <constraint firstItem="Kdj-4v-PCG" firstAttribute="centerY" secondItem="8JR-j1-3N7" secondAttribute="centerY" id="dO0-Lz-kER"/>
                             <constraint firstItem="tRg-Po-LPp" firstAttribute="top" secondItem="M7n-U5-NV4" secondAttribute="bottom" constant="-2" id="imO-tD-SbC"/>
                             <constraint firstItem="fUZ-hM-xZp" firstAttribute="top" secondItem="tRg-Po-LPp" secondAttribute="bottom" id="jEj-au-SeZ"/>
                             <constraint firstItem="tRg-Po-LPp" firstAttribute="leading" secondItem="8JR-j1-3N7" secondAttribute="leadingMargin" constant="-20" id="ks1-xT-4hA"/>
+                            <constraint firstItem="N3X-GQ-nit" firstAttribute="leading" secondItem="8JR-j1-3N7" secondAttribute="leadingMargin" id="mas-6P-I4P"/>
                             <constraint firstItem="fnh-3L-VMc" firstAttribute="top" secondItem="Jvy-Hl-chK" secondAttribute="bottom" constant="43" id="o9V-BJ-w4H"/>
                             <constraint firstAttribute="trailing" secondItem="M7n-U5-NV4" secondAttribute="trailing" id="p7s-d8-V0g"/>
                             <constraint firstItem="Jvy-Hl-chK" firstAttribute="centerX" secondItem="8JR-j1-3N7" secondAttribute="centerX" id="pXE-UN-ZBX"/>
@@ -260,6 +249,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="fnh-3L-VMc" secondAttribute="trailing" constant="-20" id="x7M-Vi-YDB"/>
                             <constraint firstItem="M7n-U5-NV4" firstAttribute="leading" secondItem="8JR-j1-3N7" secondAttribute="leading" id="xM4-Z3-Xg5"/>
                             <constraint firstItem="Jvy-Hl-chK" firstAttribute="trailing" secondItem="8JR-j1-3N7" secondAttribute="trailingMargin" id="yNG-PW-Pxm"/>
+                            <constraint firstItem="N3X-GQ-nit" firstAttribute="top" secondItem="ZUs-Dw-dnd" secondAttribute="bottom" constant="16" id="zRQ-Ac-1IR"/>
                             <constraint firstItem="syp-Bh-udc" firstAttribute="top" secondItem="fnh-3L-VMc" secondAttribute="bottom" constant="29" id="zlf-4m-Jzy"/>
                         </constraints>
                     </view>
@@ -277,6 +267,7 @@
                         <outlet property="locationTextBox" destination="fnh-3L-VMc" id="z08-4T-14K"/>
                         <outlet property="mapView" destination="tRg-Po-LPp" id="TR2-2h-4l5"/>
                         <outlet property="submitButton" destination="qP1-OW-0bU" id="I8T-kV-L0f"/>
+                        <outlet property="urlLabel" destination="N3X-GQ-nit" id="Kuk-rj-gqw"/>
                         <outlet property="urlTextBox" destination="M7n-U5-NV4" id="XIM-tU-ETk"/>
                     </connections>
                 </viewController>

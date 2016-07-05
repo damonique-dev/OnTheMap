@@ -11,9 +11,7 @@ import Foundation
 class ParseClient: NSObject {
     
     var session = NSURLSession.sharedSession()
-    
-    var students: [Student] = [Student]()
-    
+        
     class func sharedInstance() -> ParseClient {
         struct Singleton {
             static var sharedInstance = ParseClient()
@@ -59,7 +57,7 @@ class ParseClient: NSObject {
             
             //Attempt to get student data
             if let results = parsedResult[JSONResponseKeys.Results] as? [[String:AnyObject]] {
-                self.students = Student.studentsFromResults(results)
+                GlobalVariables.students = Student.studentsFromResults(results)
             } else {
                 sendError("Failed getting user data")
                 return
@@ -71,7 +69,7 @@ class ParseClient: NSObject {
     
     //Queries API to see if user has existing posted location
     func queryForStudentLocation(completionHandler: (success: Bool, result: [Student]?, error: String?) -> Void){
-        let path = "?where=%7B%22uniqueKey%22%3A%22\(UdacityClient.sharedInstance().userID!)%22%7D"
+        let path = "?where=%7B%22uniqueKey%22%3A%22\(GlobalVariables.userID!)%22%7D"
         let url = NSURL(string: Constants.GetURL + path)
         let request = NSMutableURLRequest(URL: url!)
         request.addValue(Constants.AppID, forHTTPHeaderField: "X-Parse-Application-Id")

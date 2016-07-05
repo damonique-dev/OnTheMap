@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
     var students: [Student]!
@@ -17,18 +17,19 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
+        map.delegate = self
+        getStudentLocations()
     }
     
     func reload() {
         map.removeAnnotations(annotations)
         annotations.removeAll()
         students = [Student]()
-        setUp()
+        getStudentLocations()
     }
     
     func setUp() {
-        students = ParseClient.sharedInstance().students
+        students = GlobalVariables.students
         for student in students {
             
             let lat = CLLocationDegrees(student.lat)
@@ -51,6 +52,20 @@ class MapViewController: UIViewController {
         self.map.addAnnotations(annotations)
     }
     
+    func getStudentLocations(){
+        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
+            performUIUpdatesOnMain {
+                if success {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.setUp();
+                    }
+                } else {
+                    self.displayAlert(error!)
+                }
+            }
+        }
+    }
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -69,7 +84,7 @@ class MapViewController: UIViewController {
         return pinView
     }
     
-    func mapView(map: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle! {
@@ -77,5 +92,10 @@ class MapViewController: UIViewController {
             }
         }
     }
-
+    
+    func displayAlert(message:String){
+        let alertView = UIAlertController(title: "Uh-Oh", message: message, preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alertView, animated: true, completion: nil)
+    }
 }
