@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var facbookButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         logo.tintColor = UIColor.whiteColor()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        emailTextField.text = "thomas.2576@osu.edu"
+        passwordTextField.text = "dAlexis12"
     }
 
     //Authenticate the user through their Udacity username and password
@@ -31,6 +34,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let username = emailTextField.text
         let password = passwordTextField.text
         if username != "" && password != "" {
+            activityIndicator.startAnimating()
             UdacityClient.sharedInstance().createSession(username!, password:password!){ (success, error) in
                 performUIUpdatesOnMain {
                     if success {
@@ -47,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //Sends user to udacity website to sign up for an account
     @IBAction func signUpPressed(sender: AnyObject) {
-        
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
     }
     
     //Authenicates a user through Facebook
@@ -56,6 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func displayAlert(message:String){
+        activityIndicator.stopAnimating()
         let alertView = UIAlertController(title: "Uh-Oh", message: message, preferredStyle: .Alert)
         alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         presentViewController(alertView, animated: true, completion: nil)
@@ -68,6 +73,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func completeLogin() {
+        activityIndicator.stopAnimating()
         let controller = storyboard!.instantiateViewControllerWithIdentifier("mainNavController") as! UINavigationController
         presentViewController(controller, animated: true, completion: nil)
     }

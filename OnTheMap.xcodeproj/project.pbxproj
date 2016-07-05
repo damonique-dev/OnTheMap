@@ -23,6 +23,9 @@
 		699481151D2A01B900D69812 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481141D2A01B900D69812 /* MapViewController.swift */; };
 		699481171D2A01EF00D69812 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699481161D2A01EF00D69812 /* StudentTableViewController.swift */; };
 		699481191D2A080500D69812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699481181D2A080500D69812 /* MapKit.framework */; };
+		6994811B1D2A1CC700D69812 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6994811A1D2A1CC700D69812 /* Student.swift */; };
+		6994811D1D2AD26400D69812 /* PostPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6994811C1D2AD26400D69812 /* PostPinViewController.swift */; };
+		6994811F1D2AD90700D69812 /* UIColor_Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6994811E1D2AD90700D69812 /* UIColor_Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		699481141D2A01B900D69812 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		699481161D2A01EF00D69812 /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
 		699481181D2A080500D69812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6994811A1D2A1CC700D69812 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		6994811C1D2AD26400D69812 /* PostPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinViewController.swift; sourceTree = "<group>"; };
+		6994811E1D2AD90700D69812 /* UIColor_Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_Hex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 				699480DC1D2626BB00D69812 /* LaunchScreen.storyboard */,
 				699480DF1D2626BB00D69812 /* Info.plist */,
 				699481101D29EBC400D69812 /* GCDBlackBox.swift */,
+				6994811E1D2AD90700D69812 /* UIColor_Hex.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 				699481121D2A002400D69812 /* TabBarViewController.swift */,
 				699481141D2A01B900D69812 /* MapViewController.swift */,
 				699481161D2A01EF00D69812 /* StudentTableViewController.swift */,
+				6994811C1D2AD26400D69812 /* PostPinViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 				699481061D29DA6500D69812 /* UdacityClient.swift */,
 				699481081D29E0A300D69812 /* ParseClient.swift */,
 				6994810A1D29E0B000D69812 /* ParseConstants.swift */,
+				6994811A1D2A1CC700D69812 /* Student.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -310,9 +319,12 @@
 			files = (
 				699481131D2A002400D69812 /* TabBarViewController.swift in Sources */,
 				699480D61D2626BB00D69812 /* LoginViewController.swift in Sources */,
+				6994811F1D2AD90700D69812 /* UIColor_Hex.swift in Sources */,
 				699481091D29E0A300D69812 /* ParseClient.swift in Sources */,
+				6994811B1D2A1CC700D69812 /* Student.swift in Sources */,
 				699480D41D2626BB00D69812 /* AppDelegate.swift in Sources */,
 				699481151D2A01B900D69812 /* MapViewController.swift in Sources */,
+				6994811D1D2AD26400D69812 /* PostPinViewController.swift in Sources */,
 				699481071D29DA6500D69812 /* UdacityClient.swift in Sources */,
 				699481051D29DA4700D69812 /* UdacityConstants.swift in Sources */,
 				6994810B1D29E0B000D69812 /* ParseConstants.swift in Sources */,

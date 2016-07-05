@@ -149,7 +149,7 @@ class UdacityClient: NSObject {
                 return
             }
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Unsuccessful GET")
+                sendError("Unsuccessful GET-user")
                 return
             }
             guard let data = data else {
@@ -188,9 +188,9 @@ class UdacityClient: NSObject {
     private func URLFromParameters(withPathExtension: String? = nil) -> NSURL {
         
         let components = NSURLComponents()
-        components.scheme = ParseClient.Constants.ApiScheme
-        components.host = ParseClient.Constants.ApiHost
-        components.path = ParseClient.Constants.ApiPath + (withPathExtension ?? "")
+        components.scheme = Constants.ApiScheme
+        components.host = Constants.ApiHost
+        components.path = Constants.ApiPath + (withPathExtension ?? "")
         
         return components.URL!
     }

@@ -12,10 +12,10 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        getStudentLocations()
+        //load()
     }
-
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,25 +35,34 @@ class TabBarViewController: UITabBarController {
     }
 
     @IBAction func refreshPressed(sender: AnyObject) {
-        
+        load()
     }
     
     @IBAction func pinPressed(sender: AnyObject) {
-        
+        let object: AnyObject = self.storyboard!.instantiateViewControllerWithIdentifier("postPinNavVC")
+        let controller = object as! UINavigationController
+        navigationController!.presentViewController(controller, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getStudentLocations(){
+        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
+            performUIUpdatesOnMain {
+                if !success {
+                    self.displayAlert(error!)
+                } 
+            }
+        }
     }
-    */
+    
+    func load(){
+        let map = self.viewControllers![0] as! MapViewController
+        let table = self.viewControllers![1] as! StudentTableViewController
+        getStudentLocations()
+        map.reload()
+        table.reload()
+    }
     
     private func completeLogout() {
-        print("Logout successful")
         let controller = storyboard!.instantiateViewControllerWithIdentifier("loginVC") 
         UdacityClient.sharedInstance().sessionID = ""
         UdacityClient.sharedInstance().userID = ""
