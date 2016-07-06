@@ -163,10 +163,19 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
         let tab = nav.viewControllers[0] as! TabBarViewController
         let map = tab.viewControllers![0] as! MapViewController
         let table = tab.viewControllers![1] as! StudentTableViewController
-        dispatch_async(dispatch_get_main_queue(), {
-            map.reload()
-            table.reload()
-        })
+        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
+            performUIUpdatesOnMain {
+                if success {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        table.tableView.reloadData()
+                        map.reload()
+                    }
+                } else {
+                    self.displayAlert(error!)
+                }
+            }
+        }
+ 
     }
     
     //MARK:- VIEW HELPERS

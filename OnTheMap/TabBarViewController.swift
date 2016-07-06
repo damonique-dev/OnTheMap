@@ -29,10 +29,16 @@ class TabBarViewController: UITabBarController {
     }
 
     @IBAction func refreshPressed(sender: AnyObject) {
-        let map = self.viewControllers![0] as! MapViewController
-        let table = self.viewControllers![1] as! StudentTableViewController
-        map.reload()
-        table.reload()
+        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
+            if(success){
+                let map = self.viewControllers![0] as! MapViewController
+                map.reload()
+            } else {
+                self.displayAlert(error!)
+            }
+            
+        }
+        
     }
     
     @IBAction func pinPressed(sender: AnyObject) {

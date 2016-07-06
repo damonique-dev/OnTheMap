@@ -12,7 +12,6 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
-    var students: [Student]!
     var annotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
@@ -24,13 +23,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func reload() {
         map.removeAnnotations(annotations)
         annotations.removeAll()
-        students = [Student]()
-        getStudentLocations()
     }
     
     func setUp() {
-        students = GlobalVariables.students
-        for student in students {
+        for student in GlobalVariables.students {
             
             let lat = CLLocationDegrees(student.lat)
             let long = CLLocationDegrees(student.lng)
