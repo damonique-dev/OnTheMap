@@ -45,6 +45,7 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
     //Attempts to get lat/long from input location
     @IBAction func findLocationOnMap(sender: AnyObject) {
         if locationTextBox.text != "" {
+            activityIndicator.startAnimating()
             let geocoder = CLGeocoder()
             geocoder.geocodeAddressString(locationTextBox.text, completionHandler: {(placemarks, error) -> Void in
                 if((error) != nil){
@@ -55,7 +56,7 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
                     self.setUpMap()
                     self.firstViewVisibility(true)
                     self.secondViewVisibility(false)
-                    
+                    self.activityIndicator.stopAnimating()
                 } else {
                     self.displayAlert("Could not Geocode Location")
                 }
@@ -149,7 +150,10 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
     
     func setUpMap(){
         let annotation = MKPointAnnotation()
+        let regionRadius: CLLocationDistance = 10000
         annotation.coordinate = coordinates
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinates, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
         mapView.addAnnotation(annotation)
     }
     

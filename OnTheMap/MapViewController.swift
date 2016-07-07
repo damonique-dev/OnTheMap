@@ -17,17 +17,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         map.delegate = self
-        getStudentLocations()
+        setUp()
     }
     
     func reload() {
         map.removeAnnotations(annotations)
         annotations.removeAll()
+        setUp()
     }
     
     func setUp() {
         for student in GlobalVariables.students {
-            
             let lat = CLLocationDegrees(student.lat)
             let long = CLLocationDegrees(student.lng)
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -46,20 +46,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // When the array is complete, we add the annotations to the map.
         self.map.addAnnotations(annotations)
-    }
-    
-    func getStudentLocations(){
-        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
-            performUIUpdatesOnMain {
-                if success {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.setUp();
-                    }
-                } else {
-                    self.displayAlert(error!)
-                }
-            }
-        }
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

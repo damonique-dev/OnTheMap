@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             UdacityClient.sharedInstance().createSession(username!, password:password!){ (success, error) in
                 performUIUpdatesOnMain {
                     if success {
-                        self.completeLogin()
+                        self.getStudentLocations()
                     } else {
                         self.displayAlert(error!)
                     }
@@ -77,5 +77,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         presentViewController(controller, animated: true, completion: nil)
     }
 
+    func getStudentLocations(){
+        ParseClient.sharedInstance().getStudentLocations(){ (success, error) in
+            performUIUpdatesOnMain {
+                if success {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.completeLogin()
+                    }
+                } else {
+                    self.displayAlert(error!)
+                }
+            }
+        }
+    }
 }
 
