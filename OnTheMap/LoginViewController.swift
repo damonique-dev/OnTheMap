@@ -24,8 +24,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         logo.tintColor = UIColor.whiteColor()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        emailTextField.text = "thomas.2576@osu.edu"
-        passwordTextField.text = "dAlexis12"
     }
 
     //Authenticate the user through their Udacity username and password
