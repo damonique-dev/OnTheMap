@@ -56,12 +56,13 @@ class PostPinViewController: UIViewController, UITextViewDelegate {
                     self.setUpMap()
                     self.firstViewVisibility(true)
                     self.secondViewVisibility(false)
-                    self.activityIndicator.stopAnimating()
                 } else {
                     self.displayAlert("Could not Geocode Location")
                 }
+                self.activityIndicator.stopAnimating()
             })
         } else {
+            self.activityIndicator.stopAnimating()
             displayAlert("Please enter a location!")
         }
     }
