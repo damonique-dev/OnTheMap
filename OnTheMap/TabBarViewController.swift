@@ -87,6 +87,10 @@ class TabBarViewController: UITabBarController {
                 })
             alertView.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
             presentViewController(alertView, animated: true, completion: nil)
+        } else {
+            let object: AnyObject = self.storyboard!.instantiateViewControllerWithIdentifier("postPinNavVC")
+            let controller = object as! UINavigationController
+            self.navigationController!.presentViewController(controller, animated: true, completion: nil)
         }
     }
 }
